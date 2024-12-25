@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:flutter_application_3/SecondScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,99 +9,149 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TextControllerDemo(),
+      home: HomeScreen(),
     );
   }
 }
 
-class TextControllerDemo extends StatefulWidget {
-  _TextControllerDemo createState() => _TextControllerDemo();
-}
-
-class _TextControllerDemo extends State<TextControllerDemo> {
-  int number = 0;
-  void handle() {
-    if (int.tryParse(A.text)! > 5 ||
-        int.tryParse(B.text)! > 5 ||
-        int.tryParse(C.text)! > 5) {
-      A.text = '0';
-      B.text = '0';
-      C.text = '0';
-    }
-    number = Random().nextInt(9) + 1;
-    setState(() {
-      if (number >= 1 && number <= 3) {
-        A.text = (int.tryParse(A.text)! + 1).toString();
-      } else if (number >= 4 && number <= 6) {
-        B.text = (int.parse(B.text) + 1).toString();
-      } else {
-        C.text = (int.parse(C.text) + 1).toString();
-      }
-    });
-  }
-
-  TextEditingController A = TextEditingController(text: '0');
-  TextEditingController B = TextEditingController(text: '0');
-  TextEditingController C = TextEditingController(text: '0');
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Text Editing Controller Demo"),
+        title: const Text("Home Screen"),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.limeAccent,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Random Number Generated Is $number",
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: A,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '0',
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    controller: B,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '0',
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    controller: C,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '0',
-                    ),
-                  ),
-                ),
-              ],
-            ),
             ElevatedButton(
-              onPressed: handle,
-              child: const Center(
-                child: Text("Click Here"),
-              ),
-            )
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => SecondScreen()),
+                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondScreen())
+                );
+              },
+              child: const Text("Go To Second Screen"),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'dart:math';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: TextControllerDemo(),
+//     );
+//   }
+// }
+
+// class TextControllerDemo extends StatefulWidget {
+//   _TextControllerDemo createState() => _TextControllerDemo();
+// }
+
+// class _TextControllerDemo extends State<TextControllerDemo> {
+//   int number = 0;
+//   void handle() {
+//     if (int.tryParse(A.text)! > 5 ||
+//         int.tryParse(B.text)! > 5 ||
+//         int.tryParse(C.text)! > 5) {
+//       A.text = '0';
+//       B.text = '0';
+//       C.text = '0';
+//     }
+//     number = Random().nextInt(9) + 1;
+//     setState(() {
+//       if (number >= 1 && number <= 3) {
+//         A.text = (int.tryParse(A.text)! + 1).toString();
+//       } else if (number >= 4 && number <= 6) {
+//         B.text = (int.parse(B.text) + 1).toString();
+//       } else {
+//         C.text = (int.parse(C.text) + 1).toString();
+//       }
+//     });
+//   }
+
+//   TextEditingController A = TextEditingController(text: '0');
+//   TextEditingController B = TextEditingController(text: '0');
+//   TextEditingController C = TextEditingController(text: '0');
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Text Editing Controller Demo"),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               "Random Number Generated Is $number",
+//             ),
+//             Row(
+//               children: [
+//                 Expanded(
+//                   child: TextField(
+//                     controller: A,
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(),
+//                       hintText: '0',
+//                     ),
+//                   ),
+//                 ),
+//                 const SizedBox(width: 10),
+//                 Expanded(
+//                   child: TextField(
+//                     controller: B,
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(),
+//                       hintText: '0',
+//                     ),
+//                   ),
+//                 ),
+//                 const SizedBox(width: 10),
+//                 Expanded(
+//                   child: TextField(
+//                     controller: C,
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(),
+//                       hintText: '0',
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             ElevatedButton(
+//               onPressed: handle,
+//               child: const Center(
+//                 child: Text("Click Here"),
+//               ),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 // void main() {
