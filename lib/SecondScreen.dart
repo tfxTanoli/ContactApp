@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
-  SecondScreen({super.key});
+  final String data;
+  SecondScreen({required this.data});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,11 +12,16 @@ class SecondScreen extends StatelessWidget {
         foregroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text("Back to Home Screen"),
+        child: Column(
+          children: [
+            Text("Data received from home page is $data"),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Back to Home Screen"),
+            )
+          ],
         ),
       ),
     );

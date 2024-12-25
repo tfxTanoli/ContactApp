@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
+  TextEditingController textField = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +28,21 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextField(
+              controller: textField,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: "Enter data to send"),
+            ),
             ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => SecondScreen()),
-                // );
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SecondScreen())
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SecondScreen(
+                              data: textField.text,
+                            )));
               },
-              child: const Text("Go To Second Screen"),
+              child: const Text("Click to route"),
             ),
           ],
         ),
